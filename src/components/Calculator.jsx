@@ -2,8 +2,37 @@ import Button from "./Button";
 import Display from "./Display";
 
 import "../styles/Calculator.css";
+import { useState } from "react";
 
 export default function Calculator() {
+  const [currentValue, setCurrentValue] = useState("0");
+
+  const buttonClickHandler = (value) => {
+    if (!isNaN(value) || value === ".") {
+      numberHandler(value);
+    } else {
+      operatorHandler(value);
+    }
+  };
+
+  const numberHandler = (num) => {
+    if (currentValue === "0" && num !== ".") {
+      setCurrentValue(num);
+    } else {
+      setCurrentValue((previous) => previous + num);
+    }
+  };
+
+  const operatorHandler = (operator) => {
+    if (operator === "AC") {
+      setCurrentValue("0");
+    } else if (operator === "=") {
+      calculate();
+    } else {
+      setCurrentValue("0");
+    }
+  };
+
   return (
     <div className="main">
       <Display value="0"></Display>
