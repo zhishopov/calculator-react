@@ -1,0 +1,15 @@
+.main {
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 320px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
